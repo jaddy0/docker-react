@@ -1,0 +1,11 @@
+sudo: required
+
+service:
+  - docker
+
+before_install:
+  - docker build -t jaddy6543/docker-project  -f Dockerfile.dev . 
+
+script: 
+  - docker run -e CI=true jaddy6543/docker-react npm test -- --coverage
+
